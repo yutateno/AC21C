@@ -23,14 +23,9 @@ struct Manager::Impl
 
 
 	scene::SceneBase* m_scene;
-
-	scene::SceneBase::State m_now_state;
-	scene::SceneBase::State m_next_state;
 };
 
 Manager::Impl::Impl()
-	: m_now_state(scene::SceneBase::State::Max)
-	, m_next_state(scene::SceneBase::State::Max)
 {
 	m_scene = new scene::title::SceneTitle;
 }
@@ -45,14 +40,15 @@ void Manager::Impl::init()
 void Manager::Impl::ctrl()
 {
 	m_scene->ctrl();
-	m_next_state = m_scene->get_state();
 
-	if (m_now_state != m_next_state)
+	if (m_scene->get_state() != scene::SceneBase::State::Max)
 	{
+		scene::SceneBase::State state = m_scene->get_state();
+
 		m_scene->dest();
 		delete m_scene;
 
-		switch (m_next_state)
+		switch (state)
 		{
 		case scene::SceneBase::State::Title:
 			m_scene = new scene::title::SceneTitle;
@@ -76,8 +72,6 @@ void Manager::Impl::ctrl()
 		}
 
 		m_scene->init();
-
-		m_now_state = m_next_state;
 	}
 }
 void Manager::Impl::disp()

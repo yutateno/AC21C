@@ -64,7 +64,7 @@ namespace scene
 		SceneTitle::SceneTitle()
 			: impl(new Impl)
 		{
-			m_state = scene::SceneBase::State::Title;
+			m_state = scene::SceneBase::State::Max;
 		}
 		SceneTitle::~SceneTitle()
 		{

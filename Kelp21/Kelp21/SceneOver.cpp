@@ -64,7 +64,7 @@ namespace scene
 		SceneOver::SceneOver()
 			: impl(new Impl)
 		{
-			m_state = scene::SceneBase::State::Over;
+			m_state = scene::SceneBase::State::Max;
 		}
 		SceneOver::~SceneOver()
 		{

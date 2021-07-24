@@ -277,7 +277,7 @@ namespace scene
 		SceneGame::SceneGame()
 			: impl(new Impl)
 		{
-			m_state = scene::SceneBase::State::Game;
+			m_state = scene::SceneBase::State::Max;
 		}
 		SceneGame::~SceneGame()
 		{

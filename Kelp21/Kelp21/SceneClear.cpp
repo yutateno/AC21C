@@ -64,7 +64,7 @@ namespace scene
 		SceneClear::SceneClear()
 			: impl(new Impl)
 		{
-			m_state = scene::SceneBase::State::Clear;
+			m_state = scene::SceneBase::State::Max;
 		}
 		SceneClear::~SceneClear()
 		{
